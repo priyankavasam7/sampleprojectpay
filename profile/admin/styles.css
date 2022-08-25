@@ -1,0 +1,140 @@
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    margin: 0;
+    padding: 0;
+}
+
+.main-container {
+    height: 100vh;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-direction: column;
+}
+
+.main-container h2 {
+    margin: 0 0 80px;
+    color: #646FD4;
+    font-family: "Raleway", sans-serif;
+    font-weight: 500;
+}
+
+.radio-buttons {
+    width: 100%;
+    margin: 0 auto;
+    text-align: center;
+}
+
+.custom-radio input {
+    display: none;
+}
+
+.radio-btn {
+    margin: 10px;
+    width: 180px;
+    height: 200px;
+    border: 3px solid transparent;
+    display: inline-block;
+    border-radius: 10px;
+    position: relative;
+    text-align: center;
+    box-shadow: 0 0 20px #c3c3c367;
+    cursor: pointer;
+}
+
+.radio-btn>i {
+    color: #ffffff;
+    background-color: #646FD4;
+    font-size: 20px;
+    position: absolute;
+    top: -15px;
+    left: 50%;
+    transform: translateX(-50%) scale(4);
+    border-radius: 50px;
+    padding: 3px;
+    transition: 0.2s;
+    pointer-events: none;
+    opacity: 0;
+}
+
+.radio-btn .admin {
+    width: 80px;
+    height: 80px;
+    position: absolute;
+    top: 40%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+}
+
+.radio-btn .admin i {
+    color: #646FD4;
+    line-height: 80px;
+    font-size: 60px;
+}
+
+.radio-btn .admin h3 {
+    color: #646FD4;
+    font-family: "Raleway", sans-serif;
+    font-size: 16px;
+    font-weight: 400;
+    text-transform: uppercase;
+}
+
+.custom-radio input:checked+.radio-btn {
+    border: 3px solid #646FD4;
+}
+
+.custom-radio input:checked+.radio-btn>i {
+    opacity: 1;
+    transform: translateX(-50%) scale(1);
+
+}
+
+.btn-primary {
+    background-color: #646FD4 !important;
+    margin-top: 5%;
+}
+
+.profile{
+    position: relative;
+    background-color: #646FD4;
+    text-align: left;
+    font-family: 'Poppins', sans-serif;
+}
+.mainbx{
+
+    padding: 5%;
+    background-color: #DBDFFD;
+    margin: 5% 20%;
+    border-radius: 10px;
+}
+.profile h2{
+    color: #646FD4;
+    text-align: center;
+}
+.contentbx{
+    padding-top: 5%;
+    text-align: left;
+    margin-left: 15%;
+    margin-right: 15%;
+    padding-bottom: 3%;
+}
+#image{
+    position:relative;
+    display: block;
+    width: 150px;
+    height: auto;
+    margin:5% 35% ;
+    color: #646FD4;
+}
+.round{
+    border-radius: 50%;
+    border: 6px solid #646FD4;
+
+
+}

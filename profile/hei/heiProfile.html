@@ -1,0 +1,347 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Profile</title>
+
+    <link rel="stylesheet" href="styles.css">
+
+    <link
+        href="https://fonts.googleapis.com/css2?family=Poppins:wght@200;400&family=Raleway:wght@200;300;500&display=swap"
+        rel="stylesheet">
+
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css" rel="stylesheet"
+        integrity="sha384-EVSTQN3/azprG1Anm3QDgpJLIm9Nao0Yz1ztcQTwFspd3yD65VohhpuuCOmLASjC" crossorigin="anonymous">
+
+</head>
+
+<body class="profile">
+    <div class="mainbx">
+        <h2>Higher Educational Institution Profile</h2>
+        <div class="contentbx">
+            <form>
+                <div class="profilepic">
+                    <img src="circle-user-solid.svg" class="round" id="image" alt="profile photo">
+                    <label for="formGroupExampleInput" class="form-label">Profile Picture</label>
+                    <div class="input-group mb-3">
+                        <input type="file" id="photo" class="form-control" placeholder="Recipient's username"
+                            aria-label="Recipient's username" aria-describedby="button-addon2">
+                        <button class="btn btn-outline-secondary" type="button" id="upld"
+                            onclick="uploadImage()">Upload</button>
+                    </div>
+
+                    <form autocomplete="off" id="editProfile">
+                        <div class="mb-3">
+                            <label for="formGroupExampleInput" class="form-label">Name of the Institution</label>
+                            <input type="text" class="form-control" id="heiname" placeholder="Enter your name">
+                        </div>
+
+                        <div>
+                            <label for="formGroupExampleInput" class="form-label">College Category</label>
+                            <select class="form-select cat" id="Colcategory" required
+                                aria-label=".form-select-sm example">
+                                <option value="select" selected disabled>Select</option>
+                                <option value="uni">University</option>
+                                <option value="deemed">Deemed University</option>
+                                <option value="deemtobe">Deemed to be University</option>
+                                <option value="aff">Affiliated</option>
+                                <option value="auto">Autonomous</option>
+                            </select>
+                        </div><br>
+
+                        <div class="mb-3">
+                            <label for="formGroupExampleInput" class="form-label">AICTE code</label>
+                            <input type="text" class="form-control" id="aicte" placeholder="AICTE code">
+                        </div>
+
+                        <div class="mb-3">
+                            <label for="formGroupExampleInput" class="form-label">Year of Establishment</label>
+                            <input type="date" class="form-control" id="year" placeholder="Year">
+                        </div>
+
+                        <label for="basic-url" class="form-label">Portfolio</label>
+                        <div class="input-group mb-3">
+                            <span class="input-group-text" id="basic-addon3">Link</span>
+                            <input type="url" class="form-control" id="link" aria-describedby="basic-addon3">
+                        </div>
+
+                        <div class="mb-3">
+                            <label for="formGroupExampleInput" class="form-label">Principal</label>
+                            <input type="text" class="form-control" id="princi" placeholder="Name">
+                        </div>
+
+                        <div class="mb-3">
+                            <label for="formGroupExampleInput" class="form-label">Phone No</label>
+                            <input type="tel" class="form-control" id="phone" placeholder="Phone no">
+                        </div>
+
+                        <div class="row g-3">
+                            <div class="col-md-6">
+                                <label for="inputCity" class="form-label">State</label>
+                                <input type="text" class="form-control" id="state" required>
+                            </div>
+                            <div class="col-md-4">
+                                <label for="inputState" class="form-label">District</label>
+                                <input type="text" class="form-control" id="district" required>
+                            </div>
+                            <div class="col-md-2">
+                                <label for="inputZip" class="form-label">Pincode</label>
+                                <input type="text" class="form-control" id="pincode" required>
+                            </div>
+                        </div><br>
+
+                        <label for="basic-url" class="form-label">Social links</label>
+                        <div class="input-group mb-3">
+                            <span class="input-group-text" id="basic-addon3">Link</span>
+                            <input type="link" class="form-control" id="social" aria-describedby="basic-addon3">
+                        </div>
+
+                        <label for="formGroupExampleInput" class="form-label" >Brochure</label>
+                        <div class="input-group mb-3">
+                            <input type="file" class="form-control" id="brochure" aria-describedby="button-addon2">
+                            <button class="btn btn-outline-secondary" type="button" id="upld"
+                                onclick="uploadFile()">Upload</button>
+                        </div><br>
+
+                        <label for="formGroupExampleInput" class="form-label" id="declare">Declaration document</label>
+                        <div class="input-group mb-3">
+                            <input type="file" class="form-control" placeholder="Recipient's username"
+                                aria-label="Recipient's username" aria-describedby="button-addon2">
+                            <button class="btn btn-outline-secondary" type="button" id="upld"
+                                onclick="uploadFile()">Upload</button>
+                        </div><br>
+
+                        <div class="d-grid gap-2">
+                            <button class="btn btn-primary" type="submit" id="sub"
+                                onclick="updateFAProfile()">Submit</button>
+                        </div>
+
+                    </form>
+
+                </div>
+            </form>
+        </div>
+    </div>
+
+
+    <script src="firestore-db.js"></script>
+    <script src="https://www.gstatic.com/firebasejs/7.7.0/firebase-app.js"></script>
+    <script src="https://www.gstatic.com/firebasejs/7.7.0/firebase-auth.js"></script>
+    <script src="https://www.gstatic.com/firebasejs/7.7.0/firebase-storage.js"></script>
+    <script src="https://www.gstatic.com/firebasejs/7.7.0/firebase-database.js"></script>
+    <script src="https://www.gstatic.com/firebasejs/7.7.0/firebase-firestore.js"></script>
+
+    <script type="module">
+
+        import { initializeApp } from "https://www.gstatic.com/firebasejs/9.9.1/firebase-app.js";
+
+        const firebaseConfig = {
+
+            apiKey: "AIzaSyCYybtuNQHaMpcKNdTyjK_e0Y0k5xChMQI",
+
+            authDomain: "mgpa-6cc10.firebaseapp.com",
+
+            databaseURL: "https://mgpa-6cc10-default-rtdb.firebaseio.com",
+
+            projectId: "mgpa-6cc10",
+
+            storageBucket: "mgpa-6cc10.appspot.com",
+
+            messagingSenderId: "292918906000",
+
+            appId: "1:292918906000:web:69bf0126437f9ea2abdc15"
+
+
+        };
+
+        // Initialize Firebase
+
+        const app = initializeApp(firebaseConfig);
+
+        import { getDatabase, ref, get, set, child, update, remove } from "https://www.gstatic.com/firebasejs/9.9.1/firebase-database.js";
+
+        const db = getDatabase();
+
+        var heiname = document.getElementById("heiname")
+        var ColCategory = document.getElementById("Colcategory")
+        var year = document.getElementById("year")
+        var aicte = document.getElementById("aicte")
+        var link = document.getElementById("link")
+        var state = document.getElementById("state")
+        var district = document.getElementById("district")
+        var pincode = document.getElementById("pincode")
+        var principal = document.getElementById("princi")
+        var phone = document.getElementById("phone")
+        var social = document.getElementById("social")
+
+
+        var insBtn = document.getElementById("insBtn")
+        var uuid = localStorage.getItem('currentUser')
+        function InsertData() {
+            set(ref(db, "HEIProfile/" + uuid), {
+
+                Category: "HEI",
+                HEIname: heiname.value,
+                CollegeCategory: ColCategory.value,
+                Eyear: year.value,
+                AICTE: aicte.value,
+                Link: link.value,
+                State: state.value,
+                District: district.value,
+                Pincode: pincode.value,
+                Principal: principal.value,
+                PhoneNumber: phone.value,
+                SocialLink: social.value
+
+            })
+                .then(() => {
+                    alert("data stored successfully")
+                })
+                .catch((error) => {
+                    alert("couldn't store the data due to " + error)
+                });
+        }
+
+        function SelectData() {
+            const dbref = ref(db);
+
+            get(child(dbref, "HEIProfile/" + uuid)).then((snapshot) => {
+                if (snapshot.exists()) {
+
+                    heiname.value = snapshot.val().HEIname;
+                    ColCategory.value = snapshot.val().CollegeCategory;
+                    year.value = snapshot.val().Eyear;
+                    aicte.value = snapshot.val().AICTE;
+                    link.value = snapshot.val().Link;
+                    state.value = snapshot.val().State;
+                    district.value = snapshot.val().District;
+                    pincode.value = snapshot.val().Pincode;
+                    principal.value = snapshot.val().Principal;
+                    phone.value = snapshot.val().PhoneNumber;
+                    social.value = snapshot.val().SocialLink;
+                }
+                else {
+                    alert("no data found")
+                }
+            })
+                .catch((error) => {
+                    alert(error)
+                });
+        }
+
+        insBtn.addEventListener('click', InsertData);
+        selBtn.addEventListener('click', SelectData);
+
+    </script>
+    <script>
+        var Config = {
+
+            apiKey: "AIzaSyCYybtuNQHaMpcKNdTyjK_e0Y0k5xChMQI",
+
+            authDomain: "mgpa-6cc10.firebaseapp.com",
+
+            databaseURL: "https://mgpa-6cc10-default-rtdb.firebaseio.com",
+
+            projectId: "mgpa-6cc10",
+
+            storageBucket: "mgpa-6cc10.appspot.com",
+
+            messagingSenderId: "292918906000",
+
+            appId: "1:292918906000:web:69bf0126437f9ea2abdc15"
+        };
+
+
+        // Initialize Firebase
+
+        firebase.initializeApp(Config);
+        console.log(firebase);
+
+        var uuid = localStorage.getItem('currentUser')
+
+        var imgName, imgUrl, brocUrl, decUrl;
+        var files = [];
+        var reader;
+
+        function uploadImage() {
+            const ref = firebase.storage().ref();
+            const imagesRef = ref.child('profiles');
+            const file = document.querySelector("#photo").files[0];
+            const name = +new Date() + "-" + file.name;
+            console.log(uuid)
+            const metadata = {
+                contentType: file.type
+            };
+            const task = imagesRef.child(uuid).put(file, metadata);
+            task
+                .then(snapshot => snapshot.ref.getDownloadURL())
+                .then(function (url) {
+                    imgUrl = url;
+
+                    firebase.database().ref('HEIFiles/ProfilePics/' + uuid).set({
+                        profilePic: imgUrl
+                    });
+                    alert("image uploaded successfully")
+                    const image = document.querySelector("#image")
+                    image.src = url;
+                })
+                .catch(console.error);
+        }
+
+        function uploadFile() {
+            const ref = firebase.storage().ref();
+            const fileRef = ref.child('Brochures');
+            const file1 = document.querySelector("#brochure").files[0];
+            const file2 = document.querySelector("#dec").files[0];
+            const name1 = +new Date() + "-" + file1.name;
+            console.log(uuid)
+            const metadata1 = {
+                contentType: file1.type
+            };
+            const task = fileRef.child(uuid).put(file1, metadata1);
+            task
+                .then(snapshot => snapshot.ref.getDownloadURL())
+                .then(function (url) {
+                    brocUrl = url;
+
+                    firebase.database().ref('HEIFiles/Brochures/' + uuid).set({
+                        brochure: brocUrl
+                    });
+                })
+                .catch(console.error);
+
+            const name2 = +new Date() + "-" + file2.name;
+            const metadata2 = {
+                contentType: file2.type
+            };
+            const task1 = fileRef.child(uuid).put(file2, metadata2);
+            task1
+                .then(snapshot => snapshot.ref.getDownloadURL())
+                .then(function (url) {
+                    decUrl = url;
+
+                    firebase.database().ref('HEIFiles/Declaration Forms/' + uuid).set({
+                        decForm: decUrl
+                    });
+
+                    alert("files uploaded successfully")
+                })
+                .catch(console.error);
+
+        }
+
+        function retrieveImage() {
+
+            firebase.database().ref('heiProfilePics/' + uuid).on('value', function (snapshot) {
+                document.getElementById('image').src = snapshot.val().profilePic;
+            });
+        }
+
+
+    </script>
+</body>
+
+</html>

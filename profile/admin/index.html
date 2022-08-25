@@ -1,0 +1,349 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Admin Profile</title>
+
+    <link rel="stylesheet" href="styles.css">
+
+    <link
+        href="https://fonts.googleapis.com/css2?family=Poppins:wght@200;400&family=Raleway:wght@200;300;500&display=swap"
+        rel="stylesheet">
+
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css" rel="stylesheet"
+        integrity="sha384-EVSTQN3/azprG1Anm3QDgpJLIm9Nao0Yz1ztcQTwFspd3yD65VohhpuuCOmLASjC" crossorigin="anonymous">
+
+    <script src="https://kit.fontawesome.com/13a4479071.js" crossorigin="anonymous"></script>
+</head>
+
+<body class="profile">
+    <div class="mainbx">
+        <h2>Admin Profile</h2>
+        <div class="contentbx">
+
+            <div class="profilepic">
+                <img src="circle-user-solid.svg" class="round" id="image" alt="profile photo">
+                <label for="formGroupExampleInput" class="form-label">Profile Picture</label>
+                <div class="input-group mb-3">
+                    <input type="file" id="photo" class="form-control" placeholder="Recipient's username"
+                        aria-label="Recipient's username" aria-describedby="button-addon2">
+                    <button class="btn btn-outline-secondary" type="button" id="button-addon2" id="upld"
+                        onclick="uploadImage()">Upload</button>
+                </div>
+            </div>
+
+            <div class="mb-3">
+                <label for="formGroupExampleInput" class="form-label">Name</label>
+                <input type="text" class="form-control" id="name" placeholder="Enter your name">
+            </div>
+
+            <div class="mb-3">
+                <label for="formGroupExampleInput" class="form-label">Employee Id</label>
+                <input type="text" class="form-control" id="eid" placeholder="Enter your Employee ID">
+            </div>
+            <div class="mb-3">
+                <label for="formGroupExampleInput" class="form-label">Phone no</label>
+                <input type="tel" class="form-control" id="number" placeholder="Enter your phone no">
+            </div>
+
+            <div class="mb-3">
+                <label for="formGroupExampleInput" class="form-label">Department</label>
+                <input type="text" class="form-control" id="dep" placeholder="Enter your department">
+            </div>
+
+            <div>
+                <label for="formGroupExampleInput" class="form-label">Gender</label>
+                <select class="form-select" id="gender" aria-label=".form-select-sm example">
+                    <option value="select" selected disabled>Select one</option>
+                    <option value="male">Male</option>
+                    <option value="female">Female</option>
+                    <option value="other">Other</option>
+                    <option value="notsay">Prefer not say</option>
+                </select>
+            </div><br>
+
+            <!-- removed id="button-addon2" -->
+            <label for="formGroupExampleInput" class="form-label" id="idcard">ID card</label>
+            <div class="input-group mb-3">
+                <input type="file" class="form-control" placeholder="Recipient's username"
+                    aria-label="Recipient's username" aria-describedby="button-addon2">
+                <button class="btn btn-outline-secondary" type="button" id="upld"
+                    onclick="uploadImage()">Upload</button>
+            </div>
+
+            <label for="formGroupExampleInput" class="form-label" id="doc">Document proof</label>
+            <div class="input-group mb-3">
+                <input type="file" class="form-control" placeholder="Recipient's username"
+                    aria-label="Recipient's username" aria-describedby="button-addon2">
+                <button class="btn btn-outline-secondary" type="button" id="upld" onclick="uploadFile()">Upload</button>
+            </div>
+
+            <label for="formGroupExampleInput" class="form-label" id="declare">Declaration document</label>
+            <div class="input-group mb-3">
+                <input type="file" class="form-control" placeholder="Recipient's username"
+                    aria-label="Recipient's username" aria-describedby="button-addon2">
+                <button class="btn btn-outline-secondary" type="button" id="upld" onclick="uploadFile()">Upload</button>
+            </div><br>
+
+            <div class="d-grid gap-2">
+                <button class="btn btn-primary" type="button" id="insBtn" onclick="updateADProfile()">Submit</button>
+            </div>
+        </div>
+    </div>
+
+    <!-- <script src="https://www.gstatic.com/firebasejs/7.17.1/firebase.js"></script>
+    <script src="https://www.gstatic.com/firebasejs/7.7.0/firebase-app.js"></script>
+    <script src="https://www.gstatic.com/firebasejs/7.7.0/firebase-auth.js"></script>
+    <script src="https://www.gstatic.com/firebasejs/7.7.0/firebase-storage.js"></script>
+    <script src="https://www.gstatic.com/firebasejs/7.7.0/firebase-database.js"></script>
+    <script src="https://www.gstatic.com/firebasejs/7.7.0/firebase-firestore.js"></script> -->
+
+    <!-- <script type="module">
+
+        import { initializeApp } from "https://www.gstatic.com/firebasejs/9.9.1/firebase-app.js";
+
+        const firebaseConfig = {
+
+            apiKey: "AIzaSyCYybtuNQHaMpcKNdTyjK_e0Y0k5xChMQI",
+
+            authDomain: "mgpa-6cc10.firebaseapp.com",
+
+            databaseURL: "https://mgpa-6cc10-default-rtdb.firebaseio.com",
+
+            projectId: "mgpa-6cc10",
+
+            storageBucket: "mgpa-6cc10.appspot.com",
+
+            messagingSenderId: "292918906000",
+
+            appId: "1:292918906000:web:69bf0126437f9ea2abdc15"
+
+
+        };
+
+        const app = initializeApp(firebaseConfig);
+
+        import { getDatabase, ref, get, set, child, update, remove } from "https://www.gstatic.com/firebasejs/9.9.1/firebase-database.js";
+
+        const db = getDatabase();
+
+        var aname = document.getElementById("name")
+        var eid = document.getElementById("eid")
+        var phone = document.getElementById("number")
+        var department = document.getElementById("dep")
+        var gender = document.getElementById("gender")
+
+        var insBtn = document.getElementById("insBtn")
+        var uuid = localStorage.getItem('currentUser')
+
+        function InsertData() {
+            set(ref(db, "ADProfile/" + uuid), {
+
+                Category: "Admin",
+                Adname: aname.value,
+                Eyear: eid.value,
+                Phone: phone.value,
+                Department: department.value,
+                Gender: gender.value
+            })
+                .then(() => {
+                    alert("data stored successfully")
+                })
+                .catch((error) => {
+                    alert("couldn't store the data due to " + error)
+                });
+        }
+
+        function SelectData() {
+            const dbref = ref(db);
+
+            get(child(dbref, "ADProfile/" + uuid)).then((snapshot) => {
+                if (snapshot.exists()) {
+
+                    aname.value = snapshot.val().Adname;
+                    eid.value = snapshot.val().Eyear;
+                    phone.value = snapshot.val().Phone;
+                    department.value = snapshot.val().Department;
+                    gender.value = snapshot.val().Gender
+                }
+                else {
+                    alert("no data found")
+                }
+            })
+                .catch((error) => {
+                    alert(error)
+                });
+        }
+
+        insBtn.addEventListener('click', InsertData);
+    </script> -->
+
+    <!-- <script>
+
+        var aname = document.getElementById("name")
+        var Eid = document.getElementById("eid")
+        var phone = document.getElementById("number")
+        var department = document.getElementById("dep")
+        var gender = document.getElementById("gender")
+
+
+        var Config = {
+
+            apiKey: "AIzaSyCYybtuNQHaMpcKNdTyjK_e0Y0k5xChMQI",
+
+            authDomain: "mgpa-6cc10.firebaseapp.com",
+
+            databaseURL: "https://mgpa-6cc10-default-rtdb.firebaseio.com",
+
+            projectId: "mgpa-6cc10",
+
+            storageBucket: "mgpa-6cc10.appspot.com",
+
+            messagingSenderId: "292918906000",
+
+            appId: "1:292918906000:web:69bf0126437f9ea2abdc15"
+        };
+
+
+        // Initialize Firebase
+
+        firebase.initializeApp(Config);
+        console.log(firebase);
+        const fire = firebase.firestore();
+
+        var uuid = localStorage.getItem('currentUser')
+
+        function updateADProfile() {
+            fire.collection("ADProfile").doc(uuid).set({
+
+                Category: "Admin",
+                Adname: aname.value,
+                Eyear: Eid.value,
+                Phone: phone.value,
+                Department: department.value,
+                Gender: gender.value
+            })
+                .then(() => {
+                    console.log("Document successfully written!");
+                })
+                .catch((error) => {
+                    console.error("Error writing document: ", error);
+                });
+        }
+
+        var docUrl, imgUrl, brocUrl, decUrl, idUrl;
+        var files = [];
+        var reader;
+
+        function uploadImage() {
+            const ref = firebase.storage().ref();
+            const imagesRef = ref.child('profiles');
+            const file = document.querySelector("#photo").files[0];
+            const name = +new Date() + "-" + file.name;
+            console.log(uuid)
+            const metadata = {
+                contentType: file.type
+            };
+            const task = imagesRef.child(uuid).put(file, metadata);
+            task
+                .then(snapshot => snapshot.ref.getDownloadURL())
+                .then(function (url) {
+                    imgUrl = url;
+
+                    firebase.database().ref('ADFiles/ProfilePics/' + uuid).set({
+                        profilePic: imgUrl
+                    });
+                    alert("image uploaded successfully")
+                    const image = document.querySelector("#image")
+                    image.src = url;
+                })
+                .catch(console.error);
+        }
+
+        function uploadImage2() {
+            const ref = firebase.storage().ref();
+            const idcardRef = ref.child('idcard');
+            const file = document.querySelector("#idcard").files[0];
+            const name = +new Date() + "-" + file.name;
+            console.log(uuid)
+            const metadata = {
+                contentType: file.type
+            };
+            const task = idcardRef.child(uuid).put(file, metadata);
+            task
+                .then(snapshot => snapshot.ref.getDownloadURL())
+                .then(function (url) {
+                    idUrl = url;
+
+                    firebase.database().ref('ADFiles/ProfilePics/' + uuid).set({
+                        IDCard: idUrl
+                    });
+                    alert("image uploaded successfully")
+                    const image = document.querySelector("#image")
+                    image.src = url;
+                })
+                .catch(console.error);
+        }
+
+        function uploadFile() {
+            const ref = firebase.storage().ref();
+            const file1Ref = ref.child('Docproof');
+            const file2Ref = ref.child('Decform');
+            const file1 = document.querySelector("#doc").files[0];
+            const file2 = document.querySelector("#declare").files[0];
+            const name1 = +new Date() + "-" + file1.name;
+            console.log(uuid)
+            const metadata1 = {
+                contentType: file1.type
+            };
+            const task = file1Ref.child(uuid).put(file1, metadata1);
+            task
+                .then(snapshot => snapshot.ref.getDownloadURL())
+                .then(function (url) {
+                    docUrl = url;
+
+                    firebase.database().ref('ADFiles/Document Proofs/' + uuid).set({
+                        docProof: docUrl
+                    });
+                })
+                .catch(console.error);
+
+            const name2 = +new Date() + "-" + file2.name;
+            const metadata2 = {
+                contentType: file2.type
+            };
+            const task1 = file2Ref.child(uuid).put(file2, metadata2);
+            task1
+                .then(snapshot => snapshot.ref.getDownloadURL())
+                .then(function (url) {
+                    decUrl = url;
+
+                    firebase.database().ref('ADFiles/Declaration Forms/' + uuid).set({
+                        decForm: decUrl
+                    });
+
+                    alert("files uploaded successfully")
+                })
+                .catch(console.error);
+
+        }
+
+        function retrieveImage() {
+
+            firebase.database().ref('ADProfilePics/' + uuid).on('value', function (snapshot) {
+                document.getElementById('image').src = snapshot.val().profilePic;
+            });
+        }
+
+    </script> -->
+
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/js/bootstrap.bundle.min.js"
+        integrity="sha384-MrcW6ZMFYlzcLA8Nl+NtUVF0sA7MsXsP1UyJoMp4YLEuNSfAP+JcXn/tWtIaxVXM"
+        crossorigin="anonymous"></script>
+
+</body>
+
+</html>
