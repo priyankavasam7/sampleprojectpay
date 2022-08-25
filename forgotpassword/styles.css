@@ -1,0 +1,33 @@
+html{
+    scroll-behavior: smooth;
+}
+body{
+    overflow: hidden;
+    position: relative;
+    background-color:#DBDFFD;
+    text-align: left;
+    font-family: 'Poppins', sans-serif;
+}
+.contentbx{
+    text-align: left;
+    margin: 3% 37%;
+}
+h1{
+    margin-top: 5%;
+    text-align: center;
+    color:#646FD4;
+}
+img{
+    position: relative;
+    margin: 3% 40% 2%;
+    width: auto;
+    max-width: 20%;
+    height: 20%;
+    max-height:100%;
+    border-radius: 10px;
+    object-fit:fill;
+}
+.btn-primary{
+    background-color: #646FD4 !important;
+    border-color: #646FD4 !important;
+}

@@ -1,0 +1,13 @@
+html{
+    scroll-behavior: smooth;
+}
+body{
+    /* overflow: hidden; */
+    position: relative;
+    background-color:#DBDFFD ;
+    text-align: center;
+    font-family: 'Poppins', sans-serif;
+}
+.mainbx{
+    margin: 10% 40%;
+}
